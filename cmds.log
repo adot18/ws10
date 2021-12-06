@@ -1,0 +1,300 @@
+
+ 1052  sort product_title.txt | uniq -c | sort -nk1 --reverse | wc
+ 1053  vi 100CustomerIDs.txt 
+ 1054  vi 100ProductIDs.txt 
+ 1055  cd CUSTOMERS/
+ 1056  l
+ 1057  cd ..
+ 1058  cd PRODUCTS/
+ 1059  l
+ 1060  w
+ 1061  cd ../CUSTOMERS/
+ 1062  w
+ 1063  echo before I did alias l="ls latr" and alias w="ls -la|wc"
+ 1064  echo I went into vi ~/.bash_aliases and then added them into bashrc manually
+ 1065  cd ..
+ 1066  cd datamash-1.3/
+ 1067  for file in ../CUSTOMERS/*.new ; do ./datamash -W ppearson 1:2 < ../CUSTOMERS/$file ; done
+ 1068  cd ../CUSTOMERS/
+ 1069  cd helpful/
+ 1070  ls
+ 1071  head mean.txt 
+ 1072  echo I had a for loop initially that calculated the mean of each file and put it into mean.txt for CUSTOMERS and PRODUCTS
+ 1073  sort -n mean.txt 
+ 1074  cd ../../PRODUCTS/helpful/
+ 1075  ls
+ 1076  head mean.txt 
+ 1077  sort -n mean.txt 
+ 1078  echo did the same thing for PRODUCTS except I used the star rating instead
+ 1079  history > cmds.log
+ 1080  ls
+ 1081  mv cmds.log ../../../assignment2/
+ 1082  ls
+ 1083  cd ..
+ 1084  ls
+ 1085  rm history
+ 1086  ls
+ 1087  ls
+ 1088  head '*.txt.new' 
+ 1089  cd assignment2/
+ 1090  ls
+ 1091  rm a2.txt 
+ 1092  cd ~
+ 1093  ls
+ 1094  cd WS4
+ 1095  ls
+ 1096  cd CUSTOMERS/
+ 1097  ls
+ 1098  cd ~
+ 1099  ls
+ 1100  cd WS4
+ 1101  ls
+ 1102  cd PRODUCTS/
+ 1103  ;s
+ 1104  ls
+ 1105  cd ~
+ 1106  head -n 1 amazon_reviews_us_Books_v1_02.tsv 
+ 1107  cd ws3
+ 1108  ls
+ 1109  script a2.txt
+ 1110  ls
+ 1111  perl -pe 's/\x1b\[[0-9;]*[mG]//g' a2.txt > a2.txt.clean
+ 1112  tr -cd '\11\12\15\40-\176' < a2.txt.clean > a2.txt.clean2
+ 1113  sed -i "s/^M//g" a2.txt.clean2
+ 1114  ls
+ 1115  rm a2.txt
+ 1116  rm a2.txt.clean
+ 1117  ls
+ 1118  vi a2.txt.clean2 
+ 1119  ls
+ 1120  mv a2.txt.clean2 ../assignment2/
+ 1121  ls
+ 1122  cd ../assignment2/
+ 1123  ls
+ 1124  git init
+ 1125  git add a2.txt.clean2 
+ 1126  git commit -m "a2"
+ 1127  git remote add origin https://github.com/adot18/assignment2.git
+ 1128  git push -u origin main
+ 1129  git push -u origin master
+ 1130  :bd
+ 1131  kill session
+ 1132  kill-session
+ 1133  script 
+ 1134  tmux ls
+ 1135  tmux attach-session
+ 1136  tmux
+ 1137  tmux attach-session
+ 1138  cd ws5
+ 1139  ls
+ 1140  cd ws5
+ 1141  cd CUSTOMERS/
+ 1142  ls
+ 1143  cd ws3
+ 1144  ls
+ 1145  less customerids.txt 
+ 1146  cd ..
+ 1147  ls
+ 1148  cd ws3
+ 1149  ls
+ 1150  less helpful.txt 
+ 1151  sort customerids.txt | uniq -c | sort -nk1 --reverse | head
+ 1152  sort customerids.txt | uniq -c | sort -nk1 --reverse > customerids.txt.sorted.uc.reversed
+ 1153  ls
+ 1154  cp customerids.txt.sorted.uc.reversed customerids.txt.sorted.uc.reversed.top1000
+ 1155  vi customerids.txt.sorted.uc.reversed.top1000
+ 1156  wc customerids.txt.sorted.uc.reversed.top1000 
+ 1157  mkdir ~/ws5/CUSTOMERS
+ 1158  for i in `cat customerids.txt.sorted.uc.reversed.top1000` ; do grep $i ../amazon_reviews_us_Books_v1_02.tsv ; done >> ~/ws5/CUSTOMERS/$i.txt
+ 1159  for i in `cat customerids.txt.sorted.uc.reversed.top1000` ; do grep $i ../amazon_reviews_us_Books_v1_02.tsv >> ~/ws5/CUSTOMERS/$i.txt; echo $i; done
+ 1160  cd ~/WS5
+ 1161  cd ~/ws5
+ 1162  ls
+ 1163  cd CUSTOMERS/
+ 1164  l
+ 1165  cd ~/ws5
+ 1166  ls
+ 1167  history > cmds.log
+ 1168  perl -pe 's/\x1b\[[0-9;]*[mG]//g' ws5.txt > ws5.txt.clean
+ 1169  tr -cd '\11\12\15\40-\176' < ws5.txt.clean > ws5.txt.clean2
+ 1170  sed -i "s/^M//g" ws5.txt.clean2
+ 1171  ls
+ 1172  git init
+ 1173  git add cmds.log 
+ 1174  git add ws5.txt.clean2 
+ 1175  git commit -m "ws5"
+ 1176  git remote add origin https://github.com/adot18/ws5.git
+ 1177  git push -u origin master
+ 1178  mv ws5.txt ws5
+ 1179  ls
+ 1180  cd ws5
+ 1181  ls
+ 1182  tmux attach-session
+ 1183  ls
+ 1184  echo `pwd`
+ 1185  man ps
+ 1186  echo $HOME
+ 1187  echo $SHELL
+ 1188  PRINTENV
+ 1189  printenv
+ 1190  $ prompt
+ 1191  prompt
+ 1192  ls
+ 1193  cd worksheet1/
+ 1194  ls
+ 1195  time sort a1.txt >> sorted
+ 1196  ls
+ 1197  rm sorted 
+ 1198  ls
+ 1199  sort time a1.txt >> sorted
+ 1200  cd /
+ 1201  cd.
+ 1202  cd .
+ 1203  ls
+ 1204  cd ~
+ 1205  ls
+ 1206  cd .
+ 1207  ls
+ 1208  cd assignment2/
+ 1209  cd .
+ 1210  ls
+ 1211  cd .
+ 1212  find  .  -type f -name  "first.cpp"  -exec   rm   {} \
+ 1213  find  .  -type f -name  "first.cpp"  -exec   rm   {} \;
+ 1214  ls
+ 1215  cd ~
+ 1216  ;s
+ 1217  ls
+ 1218  touch first.cpp
+ 1219  ls
+ 1220  find  .  -type f -name  "first.cpp"  -exec   rm   {} \;
+ 1221  ls
+ 1222  cd assignment2/
+ 1223  touch first.cpp
+ 1224  cd ~
+ 1225  ls
+ 1226  find  .  -type f -name  "first.cpp"  -exec   rm   {} \;
+ 1227  cd assignment2/
+ 1228  ls
+ 1229  touch first.cpp
+ 1230  ls
+ 1231  cd PRODUCTS/
+ 1232  find  .  -type f -name  "first.cpp"  -exec   rm   {} \;
+ 1233  cd ./
+ 1234  cd /.
+ 1235  cd ~
+ 1236  cd assignment2/
+ 1237  ls
+ 1238  rm first.cpp
+ 1239  prompt
+ 1240  touch ?.txt
+ 1241  ls
+ 1242  find . -type f -name "?"  -print
+ 1243  ls
+ 1244  rm ?.txt
+ 1245  touch dwawdk?.txt
+ 1246  ls
+ 1247  find . -type f -name "?"  -print
+ 1248  cd ~
+ 1249  find . -type f -name "?"  -print
+ 1250  ls
+ 1251  find . -type f -name "*"  -print
+ 1252  find . -type f -name "?"  -print
+ 1253  cd assignment2/
+ 1254  ls
+ 1255  rm dwawdk\?.txt 
+ 1256  touch o.txt
+ 1257  find . -type f -name "?"  -print
+ 1258  cd ~
+ 1259  find . -type f -name "?"  -print
+ 1260  cd assignment2/
+ 1261  find . -type f -name "?"  -print
+ 1262  find . -type f -name "*"  -print
+ 1263  export DATETIME=`date "+%Y%m%d_%H%M%S"`
+ 1264  echo $DATETIME 
+ 1265  cd assignment2/PRODUCTS/
+ 1266  cp 043935806X.txt.new 043935806X.$DATETIME.txt
+ 1267  l
+ 1268  ln -s 043935806X.20211014_181014.txt 043935806X.LATEST.txt
+ 1269  l
+ 1270  vi 043935806X.20211014_181014.txt 
+ 1271  cd ..
+ 1272  vi cronfile2
+ 1273  vi 043935806X.20211014_181014.txt
+ 1274  cd assignment2/PRODUCTS/
+ 1275  vi 043935806X.20211014_181014.txt
+ 1276  cd ~
+ 1277  vi cronfile2
+ 1278  vi cron
+ 1279  vi cronfile2 
+ 1280  crontab cronfile2
+ 1281  cron -l
+ 1282  cd assignment2/
+ 1283  cd PRODUCTS/
+ 1284  vi 043935806X.20211014_181014.txt
+ 1285  cd ~
+ 1286  cat cronfile2 
+ 1287  crontab cronfile2
+ 1288  crontab -e
+ 1289  crontab -l
+ 1290  cat assignment2/PRODUCTS/AVERAGE.txt 
+ 1291  cd assignment2/PRODUCTS/
+ 1292  mv AVERAGE.txt 043935806X.AVERAGE.txt
+ 1293  cd ~
+ 1294  cat assignment2/PRODUCTS/043935806X.AVERAGE.txt 
+ 1295  ls
+ 1296  cd ws6
+ 1297  mkdir ws6
+ 1298  ls
+ 1299  cd assignment2/
+ 1300  ls
+ 1301  cd PRODUCTS/
+ 1302  ls
+ 1303  cd $
+ 1304  cd ~
+ 1305  ls
+ 1306  script ws6.txt
+ 1307  history > cmds.log
+ 1308  less ws6.txt
+ 1309  sed 's/Ctrl-vEsc//g' ws6.txt ws6.txt.new
+ 1310  2R1;95;0c10;rgb:ffff/ffff/ffff11;rgb:1e1e/1e1e/1e1e
+ 1311  ls
+ 1312  cd ws6
+ 1313  ls
+ 1314  cd ws6
+ 1315  ls
+ 1316  cd ~
+ 1317  mv ws6.txt ws6
+ 1318  tail cmds.log
+ 1319  mv cmds.log ws6
+ 1320  ls
+ 1321  cd ws6
+ 1322  ls
+ 1323  sed 's/Ctrl-vEsc//g' ws6.txt
+ 1324  sed 's/Ctrl-vCtrl-[//g' ws6.txt 
+ 1325  perl -pe 's/\x1b\[[0-9;]*[mG]//g' ws6.txt > ws6.txt.clean
+ 1326  tr -cd '\11\12\15\40-\176' ws6.txt.clean > ws6.txt.clean2
+ 1327  tr -cd '\11\12\15\40-\176' < ws6.txt.clean > ws6.txt.clean2
+ 1328  sed -i "s/^M//g" ws6.txt.clean2
+ 1329  less ws6.txt.clean2
+ 1330  git init
+ 1331  git add ws6.txt.clean2 cmds.log 
+ 1332  git commit -m "ws6"
+ 1333  git remote add origin https://github.com/adot18/ws6.git
+ 1334  git push -u origin master
+ 1335  cd ws7
+ 1336  ls
+ 1337  cd ~/ws6
+ 1338  ls
+ 1339  mv review_body.txt ~
+ 1340  ls
+ 1341  cd ~
+1342  nano numbers.py 
+ 1343  cat numbers.py 
+ 1344  time python3 numbers.py
+ 1345  awk -F '\t' '{ print $9 }' ../amazon_reviews_us_Books_v1_02.tsv | head
+ 1346  awk -F '\t' ' NR > 1 { print $9 }' ../amazon_reviews_us_Books_v1_02.tsv | head
+ 1347  nano helpful-stats.sh
+ 1348  time bash helpful-stats.sh 
+ 1349  time python3 numbers.py
+ 1350  history | tail -n 10 > cmds.log
