@@ -1,0 +1,249 @@
+Script started on 2021-12-03 07:57:05+00:00 [TERM="xterm-256color" TTY="/dev/pts/4" COLUMNS="80" LINES="25"]
+]0;aong@f6linuxA5: ~/ws10[01;aong@f6linuxA5[00m:[01;34m~/ws10[00m$ non[K[Kano pyth[K[K[K[Knumbers.py 
+[?2004h[?1049h[22;0;0t[1;25r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[23;34H(B[0;7m[ Reading... ](B[m[23;32H(B[0;7m[ Read 16 lines ](B[m[H(B[0;7m  GNU nano 4.8                       numbers.py                                 [1;79H(B[m
+[24d(B[0;7m^G(B[m Get Help  (B[0;7m^O(B[m Write Out (B[0;7m^W(B[m Where Is  (B[0;7m^K(B[m Cut Text  (B[0;7m^J(B[m Justify   (B[0;7m^C(B[m Cur Pos
+[25d(B[0;7m^X(B[m Exit[14G(B[0;7m^R(B[m Read File (B[0;7m^\(B[m Replace   (B[0;7m^U(B[m Paste Text(B[0;7m^T(B[m To Spell  (B[0;7m^_(B[m Go To Line
+[23d[2d(B[0;1m[36mfrom[39m(B[m itertools (B[0;1m[36mimport[39m(B[m islice
+[5d(B[0;1m[36mwith[39m(B[m open((B[0;1m[32m"../amazon_reviews_us_Books_v1_02.tsv"[39m(B[m) (B[0;1m[36mas[39m(B[m f:[6;5Hnumbers = [][7;5H(B[0;1m[36mfor[39m(B[m line (B[0;1m[36min[39m(B[m islice(f, 1, (B[0;1m[35mNone[39m(B[m):(B[0;1m[31m #skip the header row[8;9H[39m(B[mnumbers.append(int(line.split((B[0;1m[32m"\t"[39m(B[m)[8]))[9;5Hnumbers.sort()
+[11dcount = len(numbers)
+[12dmax_num = max(numbers)
+[13dmin_num = min(numbers)
+[14dsum_of_nums = sum(numbers)
+[15davg = sum_of_nums/float(count)
+[17dprint((B[0;1m[32m"min %s max %s avg %s"[39m(B[m % (min_num, max_num, avg ))
+[2d[?12l[?25h[?25l[3d[?12l[?25h[?25l[4d[?12l[?25h[?25l[5d[?12l[?25h[?25l[6d[?12l[?25h[?25l[7d[?12l[?25h[?25l[8d[?12l[?25h[?25l[9d[?12l[?25h[?25l[10d[?12l[?25h[?25l[11d[?12l[?25h[?25l[12d[?12l[?25h[?25l[13d[?12l[?25h[?25l[14d[?12l[?25h[?25l[15d[?12l[?25h[?25l[16d[?12l[?25h[?25l[17d[?12l[?25h[?25l[18d[?12l[?25h[?25l[23d[J[25d[?12l[?25h[25;1H[?1049l[23;0;0t
+[?1l>[?2004l]0;aong@f6linuxA5: ~/ws10[01;aong@f6linuxA5[00m:[01;34m~/ws10[00m$ cat numbers.py 
+from itertools import islice
+
+
+with open("../amazon_reviews_us_Books_v1_02.tsv") as f:
+    numbers = []
+    for line in islice(f, 1, None): #skip the header row
+        numbers.append(int(line.split("\t")[8]))
+    numbers.sort()
+
+count = len(numbers)
+max_num = max(numbers)
+min_num = min(numbers)
+sum_of_nums = sum(numbers)
+avg = sum_of_nums/float(count)
+
+print("min %s max %s avg %s" % (min_num, max_num, avg ))
+]0;aong@f6linuxA5: ~/ws10[01;aong@f6linuxA5[00m:[01;34m~/ws10[00m$ time python3 numbers.py
+min 0 max 15835 avg 9.33467921636312
+
+real	0m12.059s
+user	0m10.488s
+sys	0m1.244s
+]0;aong@f6linuxA5: ~/ws10[01;aong@f6linuxA5[00m:[01;34m~/ws10[00m$ awk -F '\t' '{ print $9 }' ../amazon_reviews_us_Books_v1_02.tsv | head
+helpful_votes
+2
+5
+1
+2
+0
+2
+9
+3
+16
+]0;aong@f6linuxA5: ~/ws10[01;aong@f6linuxA5[00m:[01;34m~/ws10[00m$ awk -F '\t' '{ print $9 }' ../amazon_reviews_us_Books_v1_02.tsv | head
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C { print $9 }' ../amazon_reviews_us_Books_v[1@1[A
+]0;aong@f6linuxA5: ~/ws10[01;aong@f6linuxA5[00m:[01;34m~/ws10[00m$ [C[C[C[C[C[C[C[C[C[C[C[C[C[CN{ print $9 }' ../amazon_reviews_us_Books_[1@v[A
+]
+
+2
+5
+1
+2
+0
+2
+9
+3
+16
+0
+]0;aong@f6linuxA5: ~/ws10[01;aong@f6linuxA5[00m:[01;34m~/ws10[00m$ nano helpful-stats.sh
+[?2004h[?1049h[22;0;0t[1;25r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[23;34H(B[0;7m[ Reading... ](B[m[23;33H(B[0;7m[ Read 5 lines ](B[m[H(B[0;7m  GNU nano 4.8                    helpful-stats.sh                              [1;79H(B[m
+[24d(B[0;7m^G(B[m Get Help  (B[0;7m^O(B[m Write Out (B[0;7m^W(B[m Where Is  (B[0;7m^K(B[m Cut Text  (B[0;7m^J(B[m Justify   (B[0;7m^C(B[m Cur Pos
+[25d(B[0;7m^X(B[m Exit[14G(B[0;7m^R(B[m Read File (B[0;7m^\(B[m Replace   (B[0;7m^U(B[m Paste Text(B[0;7m^T(B[m To Spell  (B[0;7m^_(B[m Go To Line
+[23d[4d(B[0;1m[34mawk[35m -F[39m(B[m [32m$(B[0;1m[33m'\t'[39m(B[m ' NR [32m>[39m(B[m 1 [32m{[39m(B[m [32mif[39m(B[m [32m([39m(B[m min [32m==[39m(B[m (B[0;1m[33m""(B[0m[32m)[39m(B[m [32m{[39m(B[m min [32m=[39m(B[m max [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;\[5;2Hif[39m(B[m [32m([39m(B[m (B[0;1m[31m$9[39m(B[m [32m>[39m(B[m max [32m)[39m(B[m [32m{[39m(B[m max [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;[39m(B[m [32mif[39m(B[m [32m((B[0;1m[31m$9[39m(B[m [32m<[39m(B[m min [32m)[39m(B[m [32m{[39m(B[m min [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;\[6;2H[39m(B[msum +[32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m END [32m{[39m(B[m print (B[0;1m[33m"min "[39m(B[m min (B[0;1m[33m" max "[39m(B[m max (B[0;1m[33m" avg "[39m(B[m sum / [32m([39m(B[m NR - 1 [32m)[39m(B[m [32m}[39m(B[m ' ..(B[0;7m>[2;1H(B[m[?12l[?25h[?25l[3d[?12l[?25h[?25l[4d[?12l[?25h[?25l[C[?12l[?25h[?25l[C[?12l[?25h[?25l[C[?12l[?25h[?25l[C[?12l[?25h[?25l[C[?12l[?25h[?25l[C[?12l[?25h[?25l [?12l[?25h[?25l[C[?12l[?25h[?25l[C[?12l[?25h[?25l[C[?12l[?25h[?25l[C[?12l[?25h[?25l[C[?12l[?25h[?25l [?12l[?25h[?25l'[?12l[?25h[?25l [?12l[?25h[?25lN[?12l[?25h[?25lR[?12l[?25h[?25l [?12l[?25h[?25l[C[?12l[?25h[?25l [?12l[?25h[?25l1[?12l[?25h[?25l [?12l[?25h[?25l[C[?12l[?25h[?25l
+[23d[K[4;25H[?12l[?25h[?25l[C[?12l[?25h[?25l[C[?12l[?25h[?25l [?12l[?25h[?25l[C[?12l[?25h[?25l[5d[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[1;71H(B[0;7mModified(B[m
+[5d  [32mif[39m(B[m [32m([39m(B[m (B[0;1m[31m$9[39m(B[m [32m>[39m(B[m max [32m)[39m(B[m [32m{[39m(B[m max [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;[39m(B[m [32mif[39m(B[m [32m((B[0;1m[31m$9[39m(B[m [32m<[39m(B[m min [32m)[39m(B[m [32m{[39m(B[m min [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;\[3G[39m(B[m[?12l[?25h[?25l
+   [32mif[39m(B[m [32m([39m(B[m (B[0;1m[31m$9[39m(B[m [32m>[39m(B[m max [32m)[39m(B[m [32m{[39m(B[m max [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;[39m(B[m [32mif[39m(B[m [32m((B[0;1m[31m$9[39m(B[m [32m<[39m(B[m min [32m)[39m(B[m [32m{[39m(B[m min [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;\[4G[39m(B[m[?12l[?25h[?25l
+    [32mif[39m(B[m [32m([39m(B[m (B[0;1m[31m$9[39m(B[m [32m>[39m(B[m max [32m)[39m(B[m [32m{[39m(B[m max [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;[39m(B[m [32mif[39m(B[m [32m((B[0;1m[31m$9[39m(B[m [32m<[39m(B[m min [32m)[39m(B[m [32m{[39m(B[m min [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;\[5G[39m(B[m[?12l[?25h[?25l
+     [32mif[39m(B[m [32m([39m(B[m (B[0;1m[31m$9[39m(B[m [32m>[39m(B[m max [32m)[39m(B[m [32m{[39m(B[m max [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;[39m(B[m [32mif[39m(B[m [32m((B[0;1m[31m$9[39m(B[m [32m<[39m(B[m min [32m)[39m(B[m [32m{[39m(B[m min [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;\[6G[39m(B[m[?12l[?25h[?25l
+      [32mif[39m(B[m [32m([39m(B[m (B[0;1m[31m$9[39m(B[m [32m>[39m(B[m max [32m)[39m(B[m [32m{[39m(B[m max [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;[39m(B[m [32mif[39m(B[m [32m((B[0;1m[31m$9[39m(B[m [32m<[39m(B[m min [32m)[39m(B[m [32m{[39m(B[m min [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;\[7G[39m(B[m[?12l[?25h[?25l
+[7G [32mif[39m(B[m [32m([39m(B[m (B[0;1m[31m$9[39m(B[m [32m>[39m(B[m max [32m)[39m(B[m [32m{[39m(B[m max [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;[39m(B[m [32mif[39m(B[m [32m((B[0;1m[31m$9[39m(B[m [32m<[39m(B[m min [32m)[39m(B[m [32m{[39m(B[m min [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;\[8G[39m(B[m[?12l[?25h[?25l
+[8G [32mif[39m(B[m [32m([39m(B[m (B[0;1m[31m$9[39m(B[m [32m>[39m(B[m max [32m)[39m(B[m [32m{[39m(B[m max [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;[39m(B[m [32mif[39m(B[m [32m((B[0;1m[31m$9[39m(B[m [32m<[39m(B[m min [32m)[39m(B[m [32m{[39m(B[m min [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;\[5;9H[39m(B[m[?12l[?25h[?25l
+[5;9H [32mif[39m(B[m [32m([39m(B[m (B[0;1m[31m$9[39m(B[m [32m>[39m(B[m max [32m)[39m(B[m [32m{[39m(B[m max [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;[39m(B[m [32mif[39m(B[m [32m((B[0;1m[31m$9[39m(B[m [32m<[39m(B[m min [32m)[39m(B[m [32m{[39m(B[m min [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;\[5;10H[39m(B[m[?12l[?25h[?25l
+[5;10H [32mif[39m(B[m [32m([39m(B[m (B[0;1m[31m$9[39m(B[m [32m>[39m(B[m max [32m)[39m(B[m [32m{[39m(B[m max [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;[39m(B[m [32mif[39m(B[m [32m((B[0;1m[31m$9[39m(B[m [32m<[39m(B[m min [32m)[39m(B[m [32m{[39m(B[m min [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;\[5;11H[39m(B[m[?12l[?25h[?25l
+[5;11H [32mif[39m(B[m [32m([39m(B[m (B[0;1m[31m$9[39m(B[m [32m>[39m(B[m max [32m)[39m(B[m [32m{[39m(B[m max [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;[39m(B[m [32mif[39m(B[m [32m((B[0;1m[31m$9[39m(B[m [32m<[39m(B[m min [32m)[39m(B[m [32m{[39m(B[m min [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;\[5;12H[39m(B[m[?12l[?25h[?25l
+[5;12H [32mif[39m(B[m [32m([39m(B[m (B[0;1m[31m$9[39m(B[m [32m>[39m(B[m max [32m)[39m(B[m [32m{[39m(B[m max [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;[39m(B[m [32mif[39m(B[m [32m((B[0;1m[31m$9[39m(B[m [32m<[39m(B[m min [32m)[39m(B[m [32m{[39m(B[m min [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;\[5;13H[39m(B[m[?12l[?25h[?25l
+
+[6d [32mif[39m(B[m [32m((B[0;1m[31m$9[39m(B[m [32m<[39m(B[m min [32m)[39m(B[m [32m{[39m(B[m min [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;\
+[39m(B[m[?12l[?25h[?25l  [32mif[39m(B[m [32m((B[0;1m[31m$9[39m(B[m [32m<[39m(B[m min [32m)[39m(B[m [32m{[39m(B[m min [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;\
+[C[39m(B[m[?12l[?25h[?25l   [32mif[39m(B[m [32m((B[0;1m[31m$9[39m(B[m [32m<[39m(B[m min [32m)[39m(B[m [32m{[39m(B[m min [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;\[3G[39m(B[m[?12l[?25h[?25l
+    [32mif[39m(B[m [32m((B[0;1m[31m$9[39m(B[m [32m<[39m(B[m min [32m)[39m(B[m [32m{[39m(B[m min [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;\[4G[39m(B[m[?12l[?25h[?25l
+     [32mif[39m(B[m [32m((B[0;1m[31m$9[39m(B[m [32m<[39m(B[m min [32m)[39m(B[m [32m{[39m(B[m min [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;\[5G[39m(B[m[?12l[?25h[?25l
+      [32mif[39m(B[m [32m((B[0;1m[31m$9[39m(B[m [32m<[39m(B[m min [32m)[39m(B[m [32m{[39m(B[m min [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;\[6G[39m(B[m[?12l[?25h[?25l
+[7G [32mif[39m(B[m [32m((B[0;1m[31m$9[39m(B[m [32m<[39m(B[m min [32m)[39m(B[m [32m{[39m(B[m min [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;\[7G[39m(B[m[?12l[?25h[?25l
+[8G [32mif[39m(B[m [32m((B[0;1m[31m$9[39m(B[m [32m<[39m(B[m min [32m)[39m(B[m [32m{[39m(B[m min [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;\[8G[39m(B[m[?12l[?25h[?25l
+[6;9H [32mif[39m(B[m [32m((B[0;1m[31m$9[39m(B[m [32m<[39m(B[m min [32m)[39m(B[m [32m{[39m(B[m min [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;\[6;9H[39m(B[m[?12l[?25h[?25l
+[6;10H [32mif[39m(B[m [32m((B[0;1m[31m$9[39m(B[m [32m<[39m(B[m min [32m)[39m(B[m [32m{[39m(B[m min [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;\[6;10H[39m(B[m[?12l[?25h[?25l
+[6;11H [32mif[39m(B[m [32m((B[0;1m[31m$9[39m(B[m [32m<[39m(B[m min [32m)[39m(B[m [32m{[39m(B[m min [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;\[6;11H[39m(B[m[?12l[?25h[?25l
+[6;12H [32mif[39m(B[m [32m((B[0;1m[31m$9[39m(B[m [32m<[39m(B[m min [32m)[39m(B[m [32m{[39m(B[m min [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;\[6;12H[39m(B[m[?12l[?25h[?25l
+[6;13H [32mif[39m(B[m [32m((B[0;1m[31m$9[39m(B[m [32m<[39m(B[m min [32m)[39m(B[m [32m{[39m(B[m min [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;\[6;13H[39m(B[m[?12l[?25h[?25l
+[6;14H [32mif[39m(B[m [32m((B[0;1m[31m$9[39m(B[m [32m<[39m(B[m min [32m)[39m(B[m [32m{[39m(B[m min [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;\[6;14H[39m(B[m[?12l[?25h[?25l
+[6;15H [32mif[39m(B[m [32m((B[0;1m[31m$9[39m(B[m [32m<[39m(B[m min [32m)[39m(B[m [32m{[39m(B[m min [32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m [32m;\[6;15H[39m(B[m[?12l[?25h[?25l
+2m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m END [32m{[39m(B[m print (B[0;1m[33m"min "[39m(B[m min (B[0;1m[33m" max "[39m(B[m max (B[0;1m[33m" avg "[39m(B[m sum / [32m([39m(B[m NR - 1 [32m)[39m(B[m [32m}[39m(B[m ' .
+  [?12l[?25h[?25lsum +[32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m END [32m{[39m(B[m print (B[0;1m[33m"min "[39m(B[m min (B[0;1m[33m" max "[39m(B[m max (B[0;1m[33m" avg "[39m(B[m sum / [32m([39m(B[m NR - 1 [32m)[39m(B[m [32m}[39m(B[m ' .
+ [?12l[?25h[?25lsum +[32m=[39m(B[m (B[0;1m[31m$9[39m(B[m [32m}[39m(B[m END [32m{[39m(B[m print (B[0;1m[33m"min "[39m(B[m min (B[0;1m[33m" max "[39m(B[m max (B[0;1m[33m" avg "[39m(B[m sum / [32m([39m(B[m NR - 1 [32m)[39m(B[m [32m}[39m(B[m ' ../
+[?12l[?25h[?25l[24;14H       (B[0;7mM-D(B[m DOS Format      (B[0;7mM-A(B[m Append          (B[0;7mM-B(B[m Backup File[25;2H(B[0;7mC(B[m Cancel           (B[0;7mM-M(B[m Mac Format      (B[0;7mM-P(B[m Prepend         (B[0;7m^T(B[m To Files[K
+[23d(B[0;7mFile Name to Write: helpful-stats.sh                                            [23;1H(B[m[23;37H[?12l[?25h[?25l[1K (B[0;7m[ Writing... ](B[m[K[1;71H(B[0;7m        (B[m[23;32H(B[0;7m[ Wrote 6 lines ](B[m[24;14H(B[0;7m^O(B[m Write Out (B[0;7m^W(B[m Where Is  (B[0;7m^K(B[m Cut Text  (B[0;7m^J(B[m Justify   (B[0;7m^C(B[m Cur Pos[25;2H(B[0;7mX(B[m Exit      (B[0;7m^R(B[m Read File (B[0;7m^\(B[m Replace   (B[0;7m^U(B[m Paste Text(B[0;7m^T(B[m To Spell  (B[0;7m^_(B[m Go To Line
+[23d[7d[?12l[?25h[?25l[23d[J[25d[?12l[?25h[25;1H[?1049l[23;0;0t
+[?1l>[?2004l]0;aong@f6linuxA5: ~/ws10[01;aong@f6linuxA5[00m:[01;34m~/ws10[00m$ nano helpful-stats.shawk -F '\t' ' NR > 1 { print $9 }' ../amazon_reviews_us_Books_v1_02.tsv | head[A
+]0;aong@f6linuxA5: ~/ws10[01;aong@f6linuxA5[00m:[01;34m~/ws10[00m$ [34Pnano helpful-stats.sh
+
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Ktime bash help[Kpful-stats.sh 
+min 0 max 15835 avg 9.33468
+
+real	0m17.865s
+user	0m16.902s
+sys	0m0.934s
+]0;aong@f6linuxA5: ~/ws10[01;aong@f6linuxA5[00m:[01;34m~/ws10[00m$ time bash helpful-stats.sh 
+[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[6Pnano helpful-stats.shawk -F '\t' ' NR > 1 { print $9 }' ../amazon_reviews_us_Books_v1_02.tsv | head[A
+]0;aong@f6linuxA5: ~/ws10[01;aong@f6linuxA5[00m:[01;34m~/ws10[00m$ [C[C[C[C[C[C[C[C[C[C[C[C[C{ print $9 }' ../amazon_reviews_us_Books_v1[8P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A
+]0;aong@f6linuxA5: ~/ws10[01;aong@f6linuxA5[00m:[01;34m~/ws10[00m$ [32Ptime python3 numbers.py
+
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+min 0 max 15835 avg 9.33467921636312
+
+real	0m12.098s
+user	0m10.653s
+sys	0m1.100s
+]0;aong@f6linuxA5: ~/ws10[01;aong@f6linuxA5[00m:[01;34m~/ws10[00m$ history | tail -n 12 > cmds.log
+]0;aong@f6linuxA5: ~/ws10[01;aong@f6linuxA5[00m:[01;34m~/ws10[00m$ nano cmds.log
+[?2004h[?1049h[22;0;0t[1;25r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[23;34H(B[0;7m[ Reading... ](B[m[23;32H(B[0;7m[ Read 12 lines ](B[m[H(B[0;7m  GNU nano 4.8                        cmds.log                                  [1;79H(B[m
+[24d(B[0;7m^G(B[m Get Help  (B[0;7m^O(B[m Write Out (B[0;7m^W(B[m Where Is  (B[0;7m^K(B[m Cut Text  (B[0;7m^J(B[m Justify   (B[0;7m^C(B[m Cur Pos
+[25d(B[0;7m^X(B[m Exit[14G(B[0;7m^R(B[m Read File (B[0;7m^\(B[m Replace   (B[0;7m^U(B[m Paste Text(B[0;7m^T(B[m To Spell  (B[0;7m^_(B[m Go To Line
+[23d[2;2H[39;49m(B[m1339  awk -F '\t' '{ print $9 }' ../amazon_reviews_us_Books_v1_02.tsv | head
+[3d 1340  nano helpful-stats.sh
+[4d 1341  time bash helpful-stats.sh
+[5d 1342  nano numbers.py
+[6d 1343  cat numbers.py
+[7d 1344  time python3 numbers.py
+[8d 1345  awk -F '\t' '{ print $9 }' ../amazon_reviews_us_Books_v1_02.tsv | head
+[9d 1346  awk -F '\t' ' NR > 1 { print $9 }' ../amazon_reviews_us_Books_v1_02.tsv (B[0;7m>[10;2H(B[m1347  nano helpful-stats.sh
+[11d 1348  time bash helpful-stats.sh
+=
+[2d[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[3d[?12l[?25h[?25l[4d[?12l[?25h[?25l[5d[?12l[?25h[?25l[6d[?12l[?25h[?25l[7d[?12l[?25h[?25l[8d[?12l[?25h[?25l[9d[?12l[?25h[?25l[10d[?12l[?25h[?25l[11d[?12l[?25h[?25l[12d[?12l[?25h[?25l[13d[?12l[?25h[?25l[14d[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[23d[K[7d[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[24d[J[25d[?12l[?25h[25;1H[?1049l[23;0;0t
+[?1l>[?2004l]0;aong@f6linuxA5: ~/ws10[01;aong@f6linuxA5[00m:[01;34m~/ws10[00m$ nano=[K[K[K[K[Kless s[Kws10.txt 
+"ws10.txt" may be a binary file.  See it anyway? 
+]0;aong@f6linuxA5: ~/ws10[01;aong@f6linuxA5[00m:[01;34m~/ws10[00m$ less ws10.txt 
+"ws10.txt" may be a binary file.  See it anyway? 
+[?1049h[22;0;0t[?1h=
+[7mESC[27m[00m$ no[7mESC[27m[[7mESC[27m[Kano pyt[7mESC[27m[[7mESC[27m[[7mESC[27m[[7mESC[27m[Knumbers.py 
+[7mESC[27m[?2004h[7mESC[27m[?1049h[7mESC[27m[22;0;0t[7mESC[27m[1;25r[7mESC[27m(B[7mESC[27m[m[7mESC[27m[4l[7mESC[27m[?7h[7mESC[27m[39;49m[7mESC[27m[?1h [7mESC[27m=[7mESC[27m[?1h[7mESC[27m=[7mESC[27m[?25l[7mESC[27m[39;49m[7mESC[27m(B[7mESC[27m[m[7mESC[27m[H[7mESC[27m[2J[7mESC[27m[23;34H[7mESC[27m(B[7mESC[27m[0;7m[ R eading... ][7mESC[27m(B[7mESC[27m[m[7mESC[27m[23;32H[7mESC[27m(B[7mESC[27m[0;7m[ Read 16 lines ][7mESC[27m(B[7mESC[27m[m[7mESC[27m[H[7mESC[27m( B[7mESC[27m[0;7m  GNU nano 4.8                       numbers.py                                  [7mESC[27m[1;79H[7mESC[27m(B[7mESC[27m[m[7m^MESC[27m[24d[7mESC[27m(B[7mESC[27m[0;7m^G[7mESC[27m(B[7mESC[27m[m Get Help  [7mESC[27m(B
+[7mESC[27m[0;7m^O[7mESC[27m(B[7mESC[27m[m Write Out [7mESC[27m(B[7mESC[27m[0;7m^W[7mESC[27m(B[7mESC[27m[m Where Is  [7mESC[27m(B[7mESC[27m[0;7m ^K[7mESC[27m(B[7mESC[27m[m Cut Text  [7mESC[27m(B[7mESC[27m[0;7m^J[7mESC[27m(B[7mESC[27m[m Justify   [7mESC[27m(B[7mESC[27m[0;7m^C[7mESC[27m(B
+[7mESC[27m[0;1m[7mESC[27m[32m"min %s max %s avg %s"[7mESC[27m[39m[7mESC[27m(B[7mESC[27m[m % (min_num, :[K
+[K:[K
+[K [KESCESC[Kqq
+[K:[K
+[K [K^X^X[K^?^?
+[K:[K
+[K:[K
+[K max_num, avg ))[7m^MESC[27m[2d[7mESC[27m[?12l[7mESC[27m[?25h[7mESC[27m[?25l[7mESC[27m[3d[7mESC[27m[?12l[7mESC[27m[?25h[7mESC[27m[?25l
+[7mESC[27m[4d[7mESC[27m[?12l[7mESC[27m[?25h[7mESC[27m[?25l[7mESC[27m[5d[7mESC[27m[?12l[7mESC[27m[?25h[7mESC[27m[?25l[7mESC[27m[6d[7mESC[27m[?12l[7mESC[27m[?2 5h[7mESC[27m[?25l[7mESC[27m[7d[7mESC[27m[?12l[7mESC[27m[?25h[7mESC[27m[?25l[7mESC[27m[8d[7mESC[27m[?12l[7mESC[27m[?25h[7mESC[27m[?25l[7mESC[27m[9d[7mESC[27m[ ?12l[7mESC[27m[?25h[7mESC[27m[?25l[7mESC[27m[10d[7mESC[27m[?12l[7mESC[27m[?25h[7mESC[27m[?25l[7mESC[27m[11d[7mESC[27m[?12l[7mESC[27m[?25h[7mESC[27m[?2 5l[7mESC[27m[12d[7mESC[27m[?12l[7mESC[27m[?25h[7mESC[27m[?25l[7mESC[27m[13d[7mESC[27m[?12l[7mESC[27m[?25h[7mESC[27m[?25l[7mESC[27m[14d[7mESC[27m[?12l
+[7mESC[27m[?25h[7mESC[27m[?25l[7mESC[27m[15d[7mESC[27m[?12l[7mESC[27m[?25h[7mESC[27m[?25l[7mESC[27m[16d[7mESC[27m[?12l[7mESC[27m[?25h[7mESC[27m[?25l
+[7mESC[27m[17d[7mESC[27m[?12l[7mESC[27m[?25h[7mESC[27m[?25l[7mESC[27m[18d[7mESC[27m[?12l[7mESC[27m[?25h[7mESC[27m[?25l[7mESC[27m[23d[7mESC[27m[J[7mESC[27m[25 d[7mESC[27m[?12l[7mESC[27m[?25h[7mESC[27m[25;1H[7mESC[27m[?1049l[7mESC[27m[23;0;0t[7m^MESC[27m[?1l[7mESC[27m>[7mESC[27m[?2004l[7mESC[27m]0;benb ow@f6linuxA5: ~/ws10[7m^GESC[27m[01;32m
+
+
+
+
+@f6linuxA5[7mESC[27m[00m:[7mESC[27m[01;34m~/ws10[7mESC[27m[00m$  cat numbers.py 
+from itertools import islice
+
+
+:[K
+[Kwith open("../amazon_reviews_us_Books_v1_02.tsv") as f:
+:[K
+[K:[K
+[K[?1l>[?1049l[23;0;0t]0;aong@f6linuxA5: ~/ws10[01;aong@f6linuxA5[00m:[01;34m~/ws10[00m$ nano ws10.txt
+[?2004h[?1049h[22;0;0t[1;25r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[23;34H(B[0;7m[ Reading... ](B[m[23;32H(B[0;7m[ Read 77 lines ](B[m[H(B[0;7m  GNU nano 4.8                        ws10.txt                                  [1;79H(B[m
+[24d(B[0;7m^G(B[m Get Help  (B[0;7m^O(B[m Write Out (B[0;7m^W(B[m Where Is  (B[0;7m^K(B[m Cut Text  (B[0;7m^J(B[m Justify   (B[0;7m^C(B[m Cur Pos
+[25d(B[0;7m^X(B[m Exit[14G(B[0;7m^R(B[m Read File (B[0;7m^\(B[m Replace   (B[0;7m^U(B[m Paste Text(B[0;7m^T(B[m To Spell  (B[0;7m^_(B[m Go To Line
+[23d[2d[39;49m(B[mScript started on 2021-12-03 07:57:05+00:00 [TERM="xterm-256color" TTY="/dev/pt(B[0;7m>[3;1H(B[m^[]0;aong@f6linuxA5: ~/ws10^G^[[01;aong@f6linuxA5^[[00m:^[[01;34m~/ws10^(B[0;7m>[4;1H(B[m^[[?2004h^[[?1049h^[[22;0;0t^[[1;25r^[(B^[[m^[[4l^[[?7h^[[39;49m^[[?1h^[=^[[?1h(B[0;7m>[5;1H(B[mfrom itertools import islice
+[8dwith open("../amazon_reviews_us_Books_v1_02.tsv") as f:[9;5Hnumbers = [][10;5Hfor line in islice(f, 1, None): #skip the header row[11;9Hnumbers.append(int(line.split("\t")[8]))[12;5Hnumbers.sort()
+[14dcount = len(numbers)
+[15dmax_num = max(numbers)
+[16dmin_num = min(numbers)
+[17dsum_of_nums = sum(numbers)
+[18davg = sum_of_nums/float(count)
+[20dprint("min %s max %s avg %s" % (min_num, max_num, avg ))
+[21d^[]0;aong@f6linuxA5: ~/ws10^G^[[01;aong@f6linuxA5^[[00m:^[[01;34m~/ws10^(B[0;7m>[22;1H(B[mmin 0 max 15835 avg 9.33467921636312
+[2d[?12l[?25h[?25l[3d[?12l[?25h[?25l[4d[?12l[?25h[?25l[5d[?12l[?25h[?25l[6d[?12l[?25h[?25l[7d[?12l[?25h[?25l[8d[?12l[?25h[?25l[9d[?12l[?25h[?25l[10d[?12l[?25h[?25l[11d[?12l[?25h[?25l[12d[?12l[?25h[?25l[13d[?12l[?25h[?25l[14d[?12l[?25h[?25l[15d[?12l[?25h[?25l[16d[?12l[?25h[?25l[17d[?12l[?25h[?25l[18d[?12l[?25h[?25l[19d[?12l[?25h[?25l[20d[?12l[?25h[?25l[21d[?12l[?25h[?25l[22d[?12l[?25h[?25l7[2;22r8
+[1;25r[22;1H[?12l[?25h[?25l7[2;22r8
+[1;25r[22;1Hreal    0m12.059s
+[?12l[?25h[?25l7[2;22r8
+[1;25r[22;1Huser    0m10.488s
+[?12l[?25h[?25l7[2;22r8
+[1;25r[22;1Hsys     0m1.244s
+[?12l[?25h[?25l7[2;22r8
+[1;25r[22;1H^[]0;aong@f6linuxA5: ~/ws10^G^[[01;aong@f6linuxA5^[[00m:^[[01;34m~/ws10^(B[0;7m>[22;1H(B[m[?12l[?25h[?25l7[2;23r8[23d
+[1;25r[22;1Hhelpful_votes[K
+[?12l[?25h[?25l7[2;23r8[23d
+[1;25r[22;1H2[?12l[?25h[?25l7[2;23r8[23d
+[1;25r[22;1H5[?12l[?25h[?25l7[2;23r8[23d
+[1;25r[22;1H1[?12l[?25h[?25l7[2;23r8[23d
+[1;25r[22;1H2[?12l[?25h[?25l7[2;23r8[23d
+[1;25r[22;1H0[?12l[?25h[?25l7[2;23r8[23d
+[1;25r[22;1H2[?12l[?25h[?25l7[2;23r8[23d
+[1;25r[22;1H9[?12l[?25h[?25l7[2;23r8[23d
+[1;25r[22;1H3[?12l[?25h[?25l7[2;23r8[23d
+[1;25r[22;1H16
+[?12l[?25h[?25l7[2;23r8[23d
+[1;25r[22;1H^[]0;aong@f6linuxA5: ~/ws10^G^[[01;aong@f6linuxA5^[[00m:^[[01;34m~/ws10^(B[0;7m>[22;1H(B[m[?12l[?25h[?25l7[2;23r8[23d
+[1;25r[22;1H^M
+=
+[1;25r[22;1H16
+[?12l[?25h[?25l7[2;23r8[23d
+[1;25r[22;1H0[?12l[?25h[?25l7[2;23r8[23d
+[1;25r[22;1H^[]0;aong@f6linuxA5: ~/ws10^G^[[01;aong@f6linuxA5^[[00m:^[[01;34m~/ws10^(B[0;7m>[22;1H(B[m[?12l[?25h[?25l7[2;23r8[23d
+[1;25r[22;1H^[[?2004h^[[?1049h^[[22;0;0t^[[1;25r^[(B^[[m^[[4l^[[?7h^[[39;49m^[[?1h^[=^[[?1h(B[0;7m>[22;1H(B[m[?12l[?25h[?25l7[2;23r8[23d
+[1;25r[22;1H^M^[[K^[[A^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^(B[0;7m>[22;1H(B[m[?12l[?25h[?25l7[2;23r8[23d
+[1;25r[22;1Hmin 0 max 15835 avg 9.33468
+[?12l[?25h[?25l7[2;23r8[23d
+[1;25r[22;1H[?12l[?25h[?25l7[2;23r8[23d
+[1;25r[22;1Hreal    0m17.865s
+[?12l[?25h[?25l7[2;23r8[23d
+[1;25r[22;1Huser    0m16.902s
+[?12l[?25h[?25l7[2;23r8[23d
+[1;25r[22;1Hsys     0m0.934s
+[?12l[?25h[?25l7[2;23r8[23d
+[1;25r[22;1H^[]0;aong@f6linuxA5: ~/ws10^G^[[01;aong@f6linuxA5^[[00m:^[[01;34m~/ws10^(B[0;7m>[22;1H(B[m[?12l[?25h[?25l7[2;23r8[23d
+[1;25r[22;1H^M^[[K^[[A^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^[[C^(B[0;7m>[22;1H(B[m[?12l[?25h[?25l7[2;23r8[23d
+[1;25r[22;1Hmin 0 max 15835 avg 9.33467921636312
+[?12l[?25h[?25l7[2;23r8[23d
+[1;25r[22;1H[?12l[?25h[?25l7[2;23r8[23d
+[1;25r[22;1Hreal    0m12.098s
+[?12l[?25h[?25l7[2;23r8[23d
+[1;25r[22;1Huser    0m10.653s
+[?12l[?25h[?25l7[2;23r8[23d
+[1;25r[22;1Hsys     0m1.100s
+[?12l[?25h[?25l7[2;23r8[23d
+39;49m^[[?1h^[=^[[?1h(B[0;7m>[22;1H(B[m[?12l[?25h[?25l7[2;23r8[23d
+[1;25r[22;1H"ws10.txt" may be a binary file.  See it anyway?
+^[[00m:^[[01;34m~/ws10^(B[0;7m>[22;1H(B[m[?12l[?25h[?25l7[2;23r8[23d
+[1;25r[22;1H"ws10.txt" may be a binary file.  See it anyway?
+[?12l[?25h[?25l7[2;23r8[23d
+[1;25r[22;1H^[[?1049h^[[22;0;0t^[[?1h^[=^MScript started on 2021-12-03 07:57:05+00:00 [TERM(B[0;7m>[22;1H(B[m[?12l[?25h[?25l7[2;23r8[23d
+
+[1;25r[22;1H^[[7mESC^[[27m[?2004h^[[7mESC^[[27m[?1049h^[[7mESC^[[27m[22;0;0t^[[7mESC^[[27m[(B[0;7m>[22;1H(B[m[?12l[?25h[?25l7[2;23r8[23d
+[1;25r[22;1H^[[7mESC^[[27m[0;7m^O^[[7mESC^[[27m(B^[[7mESC^[[27m[m Write Out ^[[7mESC^[[27m((B[0;7m>[22;1H(B[m[?12l[?25h[?25l7[2;23r8[23d
+[1;25r[22;1H^[[7mESC^[[27m[m Cur Pos^[[7m^MESC^[[27m[25d^[[7mESC^[[27m(B^[[7mESC^[[27m[0;7m(B[0;7m>[22;1H(B[m[?12l[?25h[?25l7[2;23r8[23d
+[1;25r[22;1H^[[7mESC^[[27m[m Read File ^[[7mESC^[[27m(B^[[7mESC^[[27m[0;7m^\^[[7mESC^[[27m((B[0;7m>[22;1H(B[m[?12l[?25h[?25l7[2;23r8[23d
+[1;25r[22;1H^[[7mESC^[[27m(B^[[7mESC^[[27m[0;1m^[[7mESC^[[27m[36mfor^[[7mESC^[[27m[39m^[[7m(B[0;7m>[22;1H(B[m[?12l[?25h[?25l7[2;23r8[23d
+[1;25r[22;1H^[[7mESC^[[27m(B^[[7mESC^[[27m[0;1m^[[7mESC^[[27m[32m"\t"^[[7mESC^[[27m[39m^[[7(B[0;7m>[22;1H(B[m[?12l[?25h[?25l7[2;23r8[23d
+[1;25r[22;1H[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[24d[J[25d[?12l[?25h[25;1H[?1049l[23;0;0t
+
+
+Script done on 2021-12-03 08:07:27+00:00 [COMMAND_EXIT_CODE="0"]
